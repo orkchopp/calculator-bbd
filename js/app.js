@@ -22,6 +22,8 @@ const handleButtonClicks = (event) => {
         display.value += "^";
     } else if (input === "x!") {
         display.value += "!";
+    } else if (input === "%") {
+        display.value += "%";
     } else {
         display.value += input;
     }
@@ -35,6 +37,7 @@ const evaluateExpression = (expression) => {
     expression = expression.replace(/sin\(([^)]+)\)/g, (_, num) => Math.sin(degreesToRadians(parseFloat(num))));
     expression = expression.replace(/cos\(([^)]+)\)/g, (_, num) => Math.cos(degreesToRadians(parseFloat(num))));
     expression = expression.replace(/tan\(([^)]+)\)/g, (_, num) => Math.tan(degreesToRadians(parseFloat(num))));
+    expression = expression.replace(/(\d+)%/g, (_, num) => parseFloat(num) / 100);
     const tokens = expression.match(/(\d+\.?\d*)|([+\-*/])/g);
     if (!tokens) throw new Error("Invalid");
 
