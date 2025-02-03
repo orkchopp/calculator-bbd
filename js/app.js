@@ -39,7 +39,8 @@ const evaluateExpression = (expression) => {
     if (!tokens) throw new Error("Invalid");
 
     let result = parseFloat(tokens[0]);
-
+    console.log(tokens);
+    
     for (let i = 1; i < tokens.length; i += 2) {
         const operator = tokens[i];
         const nextNum = parseFloat(tokens[i + 1]);
